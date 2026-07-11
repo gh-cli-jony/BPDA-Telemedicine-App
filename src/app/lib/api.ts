@@ -1,5 +1,12 @@
+declare global {
+  interface Window {
+    BPDA_API_BASE_URL?: string;
+  }
+}
+
 const configuredApiBase = import.meta.env.VITE_API_BASE_URL as string | undefined;
-export const API_BASE = (configuredApiBase || "http://localhost:4000/api").replace(/\/$/, "");
+const runtimeApiBase = typeof window !== "undefined" ? window.BPDA_API_BASE_URL : undefined;
+export const API_BASE = (runtimeApiBase || configuredApiBase || "/api").replace(/\/$/, "");
 const REQUEST_TIMEOUT_MS = 30000;
 
 type JsonValue = Record<string, unknown> | unknown[];

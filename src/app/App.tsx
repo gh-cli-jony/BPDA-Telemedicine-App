@@ -210,10 +210,8 @@ const App = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          polli_chikitsok_id: currentUser.id,
-          polli_chikitsok_name: currentUser.name,
-          doctor_id: currentUser.doctor_id,
-          prescription_id: activePrescription?.id
+          doctorId: currentUser.doctor_id,
+          prescriptionId: activePrescription?.id
         })
       });
 
